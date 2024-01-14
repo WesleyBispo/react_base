@@ -1,14 +1,12 @@
 import { Paragrafo, Title } from './styled';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../features/login/index ';
 
 export default function Login() {
-    const isLogged = useSelector((state) => state.isLogged);
+    const isLogged = useSelector((state) => state.isLogged.value);
     const dispatch = useDispatch();
     const handleClick = () => {
-        dispatch({
-            type: 'LOGIN',
-        });
+        dispatch(login());
     };
     return (
         <section>
@@ -17,14 +15,7 @@ export default function Login() {
                 <small>Oie</small>
             </Title>
             <Paragrafo>Olá mundo hehehe</Paragrafo>
-            <button
-                onClick={(event) =>
-                    handleClick(event, {
-                        user: 'Teste',
-                        email: 'teste@gmail.com',
-                    })
-                }
-            >
+            <button onClick={handleClick}>
                 {isLogged ? 'Sair' : 'Entrar'}
             </button>
         </section>

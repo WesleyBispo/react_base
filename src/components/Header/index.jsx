@@ -4,7 +4,7 @@ import { FaHome, FaSignInAlt, FaUserAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 
 export default function Header() {
-    const isLogged = useSelector((state) => state.isLogged);
+    const isLogged = useSelector((state) => state.isLogged.value);
     return (
         <Nav>
             <Link to="/">
