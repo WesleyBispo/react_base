@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import axios from '../../services/axios';
 import { getStudentSuccess, getStudentFailure } from './studentsSlice';
 import { call, put, takeLatest } from 'redux-saga/effects';
@@ -10,11 +11,11 @@ function* studentsSaga() {
 // Função chamada para manipular os diferentes reducers de um estado da store do redux
 function* workGetStudentsFetch() {
     try {
-        const response = yield call(() => axios.get('/students'));
-        console.log(response);
+        const response = yield call(() => axios.get('/student'));
         const { data } = response;
         yield put(getStudentSuccess(data));
     } catch (error) {
+        toast.error('Erro ao buscar os dados');
         yield put(getStudentFailure());
     }
 }

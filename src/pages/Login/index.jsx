@@ -24,9 +24,6 @@ export default function Login() {
             );
         }
         dispatch(getStudentsFetch());
-        if (!students.lengthStudents) {
-            return toast.error('Erro ao buscar os dados');
-        }
         return toast.success('Operação realizada com sucesso');
     };
 
