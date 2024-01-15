@@ -6,9 +6,9 @@ export const isLoggedSlice = createSlice({
         text: '',
     },
     reducers: {
-        login: (state, action) => {
+        login: (state, { payload }) => {
             state.value = true;
-            state.text = action.payload;
+            state.text = payload;
         },
         logout: (state, { payload }) => {
             state.value = false;
