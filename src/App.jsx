@@ -4,23 +4,26 @@ import Header from './components/Header';
 import Routes from './routes';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store';
 import GlobalStyle from './styles/GlobalStyle';
 function App() {
     return (
         <Provider store={store}>
-            <Router history={history}>
-                <GlobalStyle />
-                <Header />
-                <Routes />
-                <ToastContainer
-                    position="bottom-left"
-                    pauseOnHover={false}
-                    autoClose={3000}
-                    className="toast-container"
-                    theme="colored"
-                />
-            </Router>
+            <PersistGate loading={null} persistor={persistor}>
+                <Router history={history}>
+                    <GlobalStyle />
+                    <Header />
+                    <Routes />
+                    <ToastContainer
+                        position="bottom-left"
+                        pauseOnHover={false}
+                        autoClose={3000}
+                        className="toast-container"
+                        theme="colored"
+                    />
+                </Router>
+            </PersistGate>
         </Provider>
     );
 }

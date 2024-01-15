@@ -16,7 +16,7 @@ export default function Header() {
             <Link to="">
                 <FaUserAlt size="26px" />
             </Link>
-            {isLogged === false ? <p>NÃO LOGADO</p> : <p>LOGADO</p>}
+            {isLogged ? <p>LOGADO</p> : <p>NÃO LOGADO</p>}
         </Nav>
     );
 }
